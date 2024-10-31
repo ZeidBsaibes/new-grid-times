@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from "styled-components/macro";
 
 const Button = styled.button`
   padding: 8px 24px;
@@ -9,6 +9,7 @@ const Button = styled.button`
   color: var(--color-white);
   background: var(--color-primary);
   border-radius: 4px;
+  max-width: 143px;
 `;
 
 export default Button;
