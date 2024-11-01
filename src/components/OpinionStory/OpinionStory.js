@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
+import { QUERIES } from "../../constants";
 
 const OpinionStory = ({ id, title, author, avatar }) => {
   return (
@@ -22,6 +23,10 @@ const Link = styled.a`
   & :last-child {
     border-bottom: none;
   }
+
+  @media (${QUERIES.tabletAndUp}) {
+    border-bottom: revert;
+  }
 `;
 
 const Wrapper = styled.article`
@@ -31,6 +36,15 @@ const Wrapper = styled.article`
   grid-template-areas:
     "author avatar"
     "title avatar";
+
+  @media (${QUERIES.tabletAndUp}) {
+    grid-template-columns: 1fr;
+    align-content: start;
+    grid-template-areas:
+      "avatar"
+      "author"
+      "title";
+  }
 `;
 
 const Avatar = styled.img`
@@ -41,7 +55,11 @@ const Avatar = styled.img`
   border-radius: 50%;
   object-fit: cover;
   justify-self: end;
-  align-self: center;
+  align-self: start;
+
+  @media (${QUERIES.tabletAndUp}) {
+    justify-self: start;
+  }
 `;
 
 const AuthorName = styled.p`

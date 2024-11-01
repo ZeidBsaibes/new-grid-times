@@ -6,6 +6,7 @@ import { MARKET_DATA, SPORTS_STORIES } from "../../data";
 import MarketCard from "../MarketCard";
 import SectionTitle from "../SectionTitle";
 import MiniStory from "../MiniStory";
+import { QUERIES } from "../../constants";
 
 const SpecialtyStoryGrid = () => {
   return (
@@ -55,14 +56,26 @@ const MarketCards = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
+
+  @media (${QUERIES.tabletAndUp}) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 `;
 
-const SportsSection = styled.section``;
+const SportsSection = styled.section`
+  max-width: 100vw;
+`;
 
 const SportsStories = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
+
+  @media (${QUERIES.tabletAndUp}) {
+    grid-auto-columns: 220px;
+    grid-auto-flow: column;
+    overflow-x: auto;
+  }
 `;
 
 export default SpecialtyStoryGrid;

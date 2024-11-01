@@ -1,6 +1,6 @@
-import { createGlobalStyle } from 'styled-components/macro';
+import { createGlobalStyle } from "styled-components/macro";
 
-import { COLORS, WEIGHTS, FAMILIES } from '../../constants';
+import { COLORS, WEIGHTS, FAMILIES } from "../../constants";
 
 const GlobalStyles = createGlobalStyle`
 /* http://meyerweb.com/eric/tools/css/reset/
@@ -77,6 +77,7 @@ html {
   box-sizing: border-box;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+
 }
 
 #root {
@@ -124,6 +125,8 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+
 `;
 
 export default GlobalStyles;

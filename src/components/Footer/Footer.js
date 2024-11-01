@@ -1,9 +1,10 @@
-import React from 'react';
-import { Twitter, Facebook } from 'react-feather';
-import styled from 'styled-components/macro';
-import MaxWidthWrapper from '../MaxWidthWrapper';
+import React from "react";
+import { Twitter, Facebook } from "react-feather";
+import styled from "styled-components/macro";
+import MaxWidthWrapper from "../MaxWidthWrapper";
 
-import VisuallyHidden from '../VisuallyHidden';
+import VisuallyHidden from "../VisuallyHidden";
+import { QUERIES } from "../../constants";
 
 const Footer = () => {
   return (
@@ -25,15 +26,11 @@ const Footer = () => {
           </nav>
           <Social>
             <a href="/">
-              <VisuallyHidden>
-                Visit The Grid Times on Facebook
-              </VisuallyHidden>
+              <VisuallyHidden>Visit The Grid Times on Facebook</VisuallyHidden>
               <Facebook size={20} />
             </a>
             <a href="/">
-              <VisuallyHidden>
-                Visit The Grid Times on Twitter
-              </VisuallyHidden>
+              <VisuallyHidden>Visit The Grid Times on Twitter</VisuallyHidden>
               <Twitter size={20} />
             </a>
           </Social>
@@ -137,6 +134,7 @@ const Wrapper = styled.footer`
 
 const TopRow = styled.div`
   display: flex;
+  grid-area: toprow;
   flex-direction: column;
   align-items: center;
   gap: 16px;
@@ -144,6 +142,11 @@ const TopRow = styled.div`
   font-size: 0.875rem;
   border-bottom: 1px solid var(--color-gray-700);
   padding: 24px 0;
+
+  @media (${QUERIES.tabletAndUp}) {
+    flex-direction: row;
+    justify-content: center;
+  }
 `;
 
 const Social = styled.div`
@@ -166,10 +169,19 @@ const TopNavList = styled.ul`
 
 const MainNavArea = styled.div`
   display: flex;
+
   flex-direction: column;
   gap: 32px;
   padding: 32px 0 48px;
   text-align: center;
+
+  @media (${QUERIES.tabletAndUp}) {
+    display: grid;
+    grid-template-areas:
+      "topleft topmid topright"
+      "bottomleft bottommid bottomright";
+    text-align: left;
+  }
 `;
 
 const MainNavHeading = styled.h2`
@@ -186,6 +198,7 @@ const MainNavList = styled.ul`
 `;
 
 const SubfooterWrapper = styled.div`
+  grid-area: subfooter;
   background: var(--color-offblack);
   padding: 8px 0px;
   /* Optical alignment */

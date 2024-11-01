@@ -8,6 +8,7 @@ import MainStory from "../MainStory";
 import SecondaryStory from "../SecondaryStory";
 import OpinionStory from "../OpinionStory";
 import Advertisement from "../Advertisement";
+import { QUERIES } from "../../constants";
 
 const MainStoryGrid = () => {
   return (
@@ -15,7 +16,7 @@ const MainStoryGrid = () => {
       <MainStorySection>
         <MainStory {...MAIN_STORY} />
       </MainStorySection>
-
+      <Divider></Divider>
       <SecondaryStorySection>
         <StoryList>
           {SECONDARY_STORIES.map((story, index) => (
@@ -26,11 +27,11 @@ const MainStoryGrid = () => {
 
       <OpinionSection>
         <SectionTitle>Opinion</SectionTitle>
-        <StoryList>
+        <OpinionStoryList>
           {OPINION_STORIES.map((story, index) => (
             <OpinionStory key={story.id} {...story} />
           ))}
-        </StoryList>
+        </OpinionStoryList>
       </OpinionSection>
 
       <AdvertisementSection>
@@ -49,6 +50,16 @@ const Wrapper = styled.div`
     "advertisement";
   gap: 48px;
   margin-bottom: 48px;
+
+  @media (${QUERIES.tabletAndUp}) {
+    grid-template-areas:
+      "main-story divider secondary-stories"
+      "advertisement advertisement advertisement"
+      "opinion-stories opinion-stories opinion-stories";
+    grid-template-columns: 2fr auto 1fr;
+    align-items: start;
+    gap: 16px;
+  }
 `;
 
 const MainStorySection = styled.section`
@@ -62,7 +73,27 @@ const SecondaryStorySection = styled.section`
 const StoryList = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
+`;
+
+const Divider = styled.div`
+  display: none;
+
+  @media (${QUERIES.tabletAndUp}) {
+    display: block;
+    min-width: 1px;
+    height: 100%;
+    grid-area: divider;
+    background-color: var(--color-gray-300);
+  }
+`;
+
+const OpinionStoryList = styled(StoryList)`
+  @media (${QUERIES.tabletAndUp}) {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
 `;
 
 const OpinionSection = styled.section`

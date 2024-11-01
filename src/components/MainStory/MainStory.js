@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
+import { QUERIES } from "../../constants";
 
 const MainStory = ({ id, title, image, location, abstract, ...delegated }) => {
   return (
@@ -42,6 +43,10 @@ const Abstract = styled.p`
   margin-bottom: 1em;
   white-space: pre-wrap;
   text-overflow: ellipsis;
+
+  @media (${QUERIES.tabletAndUp}) {
+    -webkit-line-clamp: 16;
+  }
 `;
 
 const Location = styled.span`
